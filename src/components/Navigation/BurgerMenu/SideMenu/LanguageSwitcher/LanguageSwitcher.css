@@ -32,7 +32,7 @@
 .switch-language__menu {
     background-color: #FFFFFF;
     position: absolute;
-    z-index: 3;
+    z-index: 5;
     display: grid;
     grid-auto-rows: 1fr;
     grid-auto-flow: row;

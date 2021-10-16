@@ -27,20 +27,20 @@ const SideMenu = props => {
         <div className="side-menu">
             <header className="side-menu__header">
                 <LanguageSwitcher changeMenu={() => currentMenuHandler('Main')}/>
-                <div><button className="side-menu__close-button"><CloseMenu/></button></div>
+                <div className="header-button"><button className="side-menu__close-button"><CloseMenu/></button></div>
             </header>
-            <ul className="side-menu__body">
+            <div className="side-menu__body">
                 <CSSTransition
                     in={currentMenu === 'Main'}
                     timeout={0}
                     unmountOnExit>
-                    <div className="side-menu__items">
+                    <ul className="side-menu__items">
                         {submenus.data.map(item => item.title !== '' && <SideMenuItem item={item.title} changeMenu={() => currentMenuHandler(item.title)} className="side-menu__link"/>)}
-                    </div>
+                    </ul>
                 </CSSTransition>
 
                 {submenus.data.map(menuTitle => (
-                    <div>
+                    <div className="block">
                         {menuTitle.title !== 'null' && <CSSTransition
                             in={currentMenu === menuTitle.title}
                             timeout={0}
@@ -58,21 +58,26 @@ const SideMenu = props => {
                             </ul>
                         </CSSTransition>}
 
+
                         {menuTitle.menuData.map (subitem => (
                             subitem.subtitle !== '' && <CSSTransition
                                 in={currentMenu === subitem.subtitle}
                                 timeout={0}
                                 unmountOnExit>
-                                <ul className="side-menu__subitems">
+                                <div className="side-menu__subitems-block">
                                     <SideMenuItem isSectionTitle={true} className="side-menu__link" item={subitem.subtitle} changeMenu={() => currentMenuHandler(menuTitle.title)}/>
-                                        <div className="side-menu__subitem_separator"/>
-                                    {subitem.info.map (s => ( <SideMenuSubitem name={s.name} info={s.info} />))}
-                                </ul>
+                                    <div className="side-menu__subitem_separator"/>
+                                    <div className="inner-block">
+                                        <ul className="side-menu__subitems">
+                                            {subitem.info.map (s => ( <SideMenuSubitem name={s.name} info={s.info} />))}
+                                        </ul>
+                                    </div>
+                                </div>
                             </CSSTransition>
                         ))}
                     </div>
                 ))}
-            </ul>
+            </div>
             {currentMenu === 'Main' && (
                 <div className="side-menu__footer">
                     <div className="side-menu__footer-items">

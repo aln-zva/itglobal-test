@@ -3,7 +3,7 @@
     grid-template-rows: repeat(2, auto);
     grid-row-gap: 3vw;
     margin-left: 5vw;
-    width: 93vw;
+    /*width: 92vw;*/
 }
 
 .name {
