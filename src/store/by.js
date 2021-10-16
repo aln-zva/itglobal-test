@@ -212,7 +212,7 @@ const by = {
             title: 'О компании',
             menuData:
             [
-                {subtitle: 'О компании', info: []},
+                {subtitle: 'О компании ', info: []},
                 {subtitle: 'Наши клиенты', info: []},
                 {subtitle: 'Контакты', info: []},
                 {subtitle: 'Новости', info: []},

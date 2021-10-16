@@ -209,10 +209,10 @@ const ru = {
         ,
         {
             id: 'about',
-            title: 'О компании',
+            title: 'О Компании',
             menuData:
             [
-                {subtitle: 'О компании', info: []},
+                {subtitle: 'О компании ', info: []},
                 {subtitle: 'Наши клиенты', info: []},
                 {subtitle: 'Контакты', info: []},
                 {subtitle: 'Новости', info: []},

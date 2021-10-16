@@ -49,6 +49,10 @@ const tr = {
                                 'veya bilgilere yapılacak olan izinsiz erişimleri engelleme işlemi.'
                             }
                             ]
+                },
+                {
+                    subtitle: '',
+                    info: []
                 }
             ]
         },
