@@ -1,0 +1,16 @@
+.subitem {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-row-gap: 3vw;
+    margin-left: 5vw;
+    width: 93vw;
+}
+
+.name {
+    font-size: 18px;
+}
+
+.info {
+    font-size: 14px;
+    color: #577188;
+}
