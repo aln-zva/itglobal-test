@@ -1,4 +1,4 @@
-import './LanguageSwitcher.css'
+import './LanguageSwitcher.scss'
 import RU from '../../../../../assets/RU.svg'
 import EN from '../../../../../assets/EN.svg'
 import KZ from '../../../../../assets/KZ.svg'
@@ -48,7 +48,7 @@ const LanguageSwitcher = props => {
             </div>
             {showSwitch &&
             <div className="switch-language__menu">
-                <span className="switch-language__title switch-language__option">Страна</span>
+                <span className="switch-language__title">Страна</span>
                 {langs.map(lang => (
                     <div
                         onClick={() => switchHandler (lang.value)}

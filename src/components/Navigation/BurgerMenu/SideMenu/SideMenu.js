@@ -1,4 +1,4 @@
-import './SideMenu.css'
+import './SideMenu.scss'
 import SideMenuItem from "./SideMenuItem/SideMenuItem";
 import SideMenuSubitem from "./SideMenuItem/SideMenuSubitem";
 import {CSSTransition} from "react-transition-group";
@@ -11,17 +11,30 @@ import LangContext from "../../../LangContext/LangContext";
 
 const SideMenu = props => {
     const [currentMenu, setCurrentMenu] = useState('Main')
+    const [currentSubMenu, setCurrentSubMenu] = useState('Services')
+    const [openSubMenu, setOpenSubMenu] = useState(false)
+
 
     const language = useContext(LangContext)
 
     const submenus = new LocalizedStrings(translations)
     submenus.setLanguage(language.language)
+    const [secondLevel, setSecondLevel] = useState(submenus.data[0].id)
+
 
     const currentMenuHandler = (title) => {
         setCurrentMenu(title)
+        setOpenSubMenu(false)
     }
 
-    console.log(submenus.data)
+    const subMenuHandler = (subtitle, secondLevelId) => {
+        setCurrentSubMenu(subtitle)
+        setCurrentMenu(subtitle)
+        setSecondLevel(secondLevelId)
+        setOpenSubMenu(true)
+    }
+
+    console.log(secondLevel)
 
     return (
         <div className="side-menu">
@@ -35,54 +48,54 @@ const SideMenu = props => {
                     timeout={0}
                     unmountOnExit>
                     <ul className="side-menu__items">
-                        {submenus.data.map(item => item.title !== '' && <SideMenuItem item={item.title} changeMenu={() => currentMenuHandler(item.title)} className="side-menu__link"/>)}
+                        {submenus.data.map(item => item.title !== '' &&
+                            <SideMenuItem item={item.title}
+                                          changeMenu={() => currentMenuHandler(item.id)}
+                                          className="side-menu__link"/>)}
                     </ul>
                 </CSSTransition>
 
                 {submenus.data.map(menuTitle => (
-                    <div className="block">
-                        {menuTitle.title !== 'null' && <CSSTransition
-                            in={currentMenu === menuTitle.title}
+                        menuTitle.title !== 'null' && <CSSTransition
+                            in={currentMenu === menuTitle.id}
                             timeout={0}
                             unmountOnExit>
                             <ul className="side-menu__section">
                                 <SideMenuItem isSectionTitle={true} className="side-menu__link"
-                                              classNameArrow="side-menu__title-arrow" item={menuTitle.title}
+                                              item={menuTitle.title}
                                               changeMenu={() => currentMenuHandler('Main')}/>
                                 <div className="side-menu__items">
                                     {menuTitle.menuData.map(item => (
                                        item.subtitle !== '' && <SideMenuItem isAbout={menuTitle.id === 'about'} isSectionTitle={false}
                                                       className="side-menu__section-item" item={item.subtitle}
-                                                      changeMenu={() => currentMenuHandler(item.subtitle)}/>))}
+                                                      changeMenu={() => subMenuHandler(item.subtitle, menuTitle.id)}/>))}
                                 </div>
                             </ul>
-                        </CSSTransition>}
+                        </CSSTransition>))}
 
 
-                        {menuTitle.menuData.map (subitem => (
-                            subitem.subtitle !== '' && <CSSTransition
-                                in={currentMenu === subitem.subtitle}
+                {submenus.data.find (function (item) {
+                    return item.id === secondLevel
+                }).menuData.map (subitem => (
+                            subitem.subtitle !== '' && openSubMenu && <CSSTransition
+                                in={currentSubMenu === subitem.subtitle}
                                 timeout={0}
                                 unmountOnExit>
                                 <div className="side-menu__subitems-block">
-                                    <SideMenuItem isSectionTitle={true} className="side-menu__link" item={subitem.subtitle} changeMenu={() => currentMenuHandler(menuTitle.title)}/>
+                                    <SideMenuItem isSectionTitle={true} className="side-menu__link" item={subitem.subtitle} changeMenu={() => currentMenuHandler(secondLevel)}/>
                                     <div className="side-menu__subitem_separator"/>
-                                    <div className="inner-block">
-                                        <ul className="side-menu__subitems">
+                                    <ul className="side-menu__subitems">
                                             {subitem.info.map (s => ( <SideMenuSubitem name={s.name} info={s.info} />))}
-                                        </ul>
+                                    </ul>
                                     </div>
-                                </div>
                             </CSSTransition>
                         ))}
-                    </div>
-                ))}
             </div>
             {currentMenu === 'Main' && (
                 <div className="side-menu__footer">
                     <div className="side-menu__footer-items">
                         <a target="_blank" href="https://itglobal.com/ru-kz/company/contacts/" className="side-menu__footer-link">{submenus.footer.contacts}</a>
-                        <div>{submenus.footer.search}</div>
+                        <span className="side-menu__footer-link">{submenus.footer.search}</span>
                     </div>
                 </div>
             )}

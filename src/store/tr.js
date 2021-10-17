@@ -22,6 +22,27 @@ const tr = {
                             info: 'Size artırılmış düzeyde kontrol ve güvenlik sunarken esneklik ' +
                                 've ölçeklenebilirlik sağlayan tahsisli, tek kiracıya sahip bulut ortamı.'
                         },
+                        {
+                            name: '',
+                            info: ''
+                        },
+                        {
+                            name: '',
+                            info: ''
+                        },
+                        {
+                            name: '',
+                            info: ''
+                        },
+                        {
+                            name: '',
+                            info: ''
+                        },
+                        {
+                            name: '',
+                            info: ''
+                        },
+
                     ]
                 },
                 {
@@ -47,7 +68,27 @@ const tr = {
                             info: ' bilgilerin izinsiz kullanımından, izinsiz ifşa edilmesinden, ' +
                                 'izinsiz yok edilmesinden, izinsiz değiştirilmesinden, bilgilere hasar verilmesinden koruma, ' +
                                 'veya bilgilere yapılacak olan izinsiz erişimleri engelleme işlemi.'
-                            }
+                            },
+                        {
+                            name: '',
+                            info: ''
+                        },
+                        {
+                            name: '',
+                            info: ''
+                        },
+                        {
+                            name: '',
+                            info: ''
+                        },
+                        {
+                            name: '',
+                            info: ''
+                        },
+                        {
+                            name: '',
+                            info: ''
+                        },
                             ]
                 },
                 {

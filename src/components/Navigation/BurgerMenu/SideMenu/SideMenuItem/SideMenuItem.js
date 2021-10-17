@@ -1,4 +1,4 @@
-import './SideMenuItem.css'
+import './SideMenuItem.scss'
 
 const SideMenuItem = props => {
     return (
@@ -8,6 +8,7 @@ const SideMenuItem = props => {
                     className={props.isSectionTitle ? 'arrow side-menu__link-title-arrow' : 'arrow side-menu__link-arrow'}/>}
                  <span className="side-menu__item-name">{props.item}</span>
             </a>
+            {props.isOpen && props.children}
         </li>
     )
 }
