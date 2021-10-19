@@ -1,7 +1,45 @@
 .menu {
-    height: 100%;
-    display: grid;
-    justify-content: start;
-    align-items: center;
+    width: 25px;
+    align-content: center;
+    justify-content: end;
+    height: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
 }
+
+.burgerMenu {
+    width: 25px;
+    height: 20px;
+    position: absolute;
+    display: block;
+}
+
+.burgerMenu:before, .burgerMenu:after {
+    content: '';
+    height: 2px;
+    width: 100%;
+    background-color: #151617;
+    position: absolute;
+    left: 0;
+}
+
+.burgerMenu:before {
+    top:1;
+}
+
+.burgerMenu:after {
+    bottom: 1px;
+}
+
+.burgerMenu span {
+    height: 2px;
+    width: 100%;
+    background-color: #151617;
+    position: absolute;
+    left: 0;
+    top: 9px;
+}
+
+
+
 

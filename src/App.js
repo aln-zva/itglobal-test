@@ -1,18 +1,23 @@
 import './App.css';
 import Navigation from "./components/Navigation/Navigation";
 import BurgerMenu from "./components/Navigation/BurgerMenu/BurgerMenu";
-import MenuIcon from '@material-ui/icons/Menu'
-import CloseMenu from '@material-ui/icons/Close'
-import SideMenu from "./components/Navigation/BurgerMenu/SideMenu/SideMenu";
-import React from "react";
+import SideMenu from "./components/Navigation/SideMenu/SideMenu";
+import React, {useState} from "react";
+
 
 function App() {
+    const [isOpen, setIsOpen] = useState(false)
+
+    const burgerMenuToggle = () => {
+        setIsOpen(!isOpen)
+    }
+
   return (
     <div className="App">
-        <SideMenu/>
-        {/*<Navigation>*/}
-        {/*    <BurgerMenu openIcon={<MenuIcon/>} closeIcon={<CloseMenu/>}/>*/}
-        {/*</Navigation>*/}
+        <Navigation>
+            <BurgerMenu isOpen={isOpen} open={burgerMenuToggle}/>
+            <SideMenu close={burgerMenuToggle} isOpen={isOpen}/>
+        </Navigation>
     </div>
   );
 }

@@ -1,12 +1,12 @@
 import './LanguageSwitcher.scss'
-import RU from '../../../../../assets/RU.svg'
-import EN from '../../../../../assets/EN.svg'
-import KZ from '../../../../../assets/KZ.svg'
-import NL from '../../../../../assets/NL.svg'
-import BY from '../../../../../assets/BY.svg'
-import TR from '../../../../../assets/TR.svg'
-import check from '../../../../../assets/check.svg'
-import LangContext from "../../../../LangContext/LangContext";
+import RU from '../../../../assets/RU.svg'
+import EN from '../../../../assets/EN.svg'
+import KZ from '../../../../assets/KZ.svg'
+import NL from '../../../../assets/NL.svg'
+import BY from '../../../../assets/BY.svg'
+import TR from '../../../../assets/TR.svg'
+import check from '../../../../assets/check.svg'
+import LangContext from "../../../LangContext/LangContext";
 
 import React, {useContext, useState} from "react";
 

@@ -2,6 +2,10 @@
     --paddings: 30px 50px 30px 10px;
 }
 
+.side-menu.active {
+    transform: translateX(0);
+}
+
 .side-menu {
     height: 100%;
     width: 100vw;
@@ -12,6 +16,11 @@
     align-content: start;
     box-sizing: border-box;
     background-color: #FFFFFF;
+    position: absolute;
+    top: 0;
+    transform: translateX(110%);
+    transition: all 0.5s;
+
 
     .side-menu__header {
         position: sticky;
@@ -152,4 +161,81 @@
         border-radius: 2px !important;
     }
 }
+
+.main-menu-enter {
+    transform: translate(110%, 0);
+    opacity: 0;
+    position: absolute;
+}
+
+.main-menu-enter-active {
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: all 0.5s;
+    position: absolute;
+
+}
+
+.main-menu-exit {
+    position: absolute;
+    opacity: 0;
+}
+
+.main-menu-exit-active {
+    transform: translate(110%, 0);
+    transition: all 0.5s;
+    position: absolute;
+}
+
+
+.menu-secondary-enter {
+    transform: translate(110%, 0);
+    opacity: 0;
+    position: absolute;
+    transition: all 0.5s;
+}
+
+.menu-secondary-enter-active {
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: all 0.5s;
+    position: absolute;
+}
+
+.menu-secondary-exit {
+    opacity: 0;
+    position: absolute;
+}
+
+.menu-secondary-exit-active {
+    transform: translate(110%, 0);
+    transition: all 0.5s;
+    position: absolute;
+}
+
+.submenu-enter {
+    transform: translate(110%, 0);
+    opacity: 0;
+    position: absolute;
+    transition: all 0.5s;
+}
+
+.submenu-enter-active {
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: all 0.5s;
+    position: absolute;
+}
+
+.submenu-exit {
+    opacity: 0;
+    position: absolute;
+}
+
+.submenu-exit-active {
+    transform: translate(110%, 0);
+    transition: all 0.5s;
+    position: absolute;
+}
+
 

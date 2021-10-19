@@ -5,14 +5,13 @@ import {CSSTransition} from "react-transition-group";
 import CloseMenu from '@material-ui/icons/Close'
 import React, {useContext, useState} from 'react'
 import LanguageSwitcher from "./LanguageSwitcher/LanguageSwitcher";
-import translations from '../../../../store/translations'
+import translations from '../../../translations/translations'
 import LocalizedStrings from 'react-localization'
-import LangContext from "../../../LangContext/LangContext";
+import LangContext from "../../LangContext/LangContext";
 
 const SideMenu = props => {
     const [currentMenu, setCurrentMenu] = useState('Main')
     const [currentSubMenu, setCurrentSubMenu] = useState('Services')
-    const [openSubMenu, setOpenSubMenu] = useState(false)
 
 
     const language = useContext(LangContext)
@@ -24,29 +23,28 @@ const SideMenu = props => {
 
     const currentMenuHandler = (title) => {
         setCurrentMenu(title)
-        setOpenSubMenu(false)
+        setCurrentSubMenu(title)
     }
 
     const subMenuHandler = (subtitle, secondLevelId) => {
         setCurrentSubMenu(subtitle)
         setCurrentMenu(subtitle)
         setSecondLevel(secondLevelId)
-        setOpenSubMenu(true)
     }
 
-    console.log(secondLevel)
-
     return (
-        <div className="side-menu">
+        <div className={props.isOpen ? 'side-menu active' : 'side-menu'}>
             <header className="side-menu__header">
                 <LanguageSwitcher changeMenu={() => currentMenuHandler('Main')}/>
-                <div className="header-button"><button className="side-menu__close-button"><CloseMenu/></button></div>
+                <div className="header-button" onClick={props.close}><button className="side-menu__close-button"><CloseMenu/></button></div>
             </header>
             <div className="side-menu__body">
                 <CSSTransition
                     in={currentMenu === 'Main'}
-                    timeout={0}
-                    unmountOnExit>
+                    timeout={500}
+                    unmountOnExit
+                    classNames="main-menu"
+                >
                     <ul className="side-menu__items">
                         {submenus.data.map(item => item.title !== '' &&
                             <SideMenuItem item={item.title}
@@ -58,8 +56,10 @@ const SideMenu = props => {
                 {submenus.data.map(menuTitle => (
                         menuTitle.title !== 'null' && <CSSTransition
                             in={currentMenu === menuTitle.id}
-                            timeout={0}
-                            unmountOnExit>
+                            timeout={500}
+                            unmountOnExit
+                            classNames="menu-secondary"
+                    >
                             <ul className="side-menu__section">
                                 <SideMenuItem isSectionTitle={true} className="side-menu__link"
                                               item={menuTitle.title}
@@ -77,9 +77,10 @@ const SideMenu = props => {
                 {submenus.data.find (function (item) {
                     return item.id === secondLevel
                 }).menuData.map (subitem => (
-                            subitem.subtitle !== '' && openSubMenu && <CSSTransition
-                                in={currentSubMenu === subitem.subtitle}
-                                timeout={0}
+                            subitem.subtitle !== '' && <CSSTransition
+                                in={currentSubMenu === subitem.subtitle && currentMenu === subitem.subtitle}
+                                timeout={500}
+                                classNames="submenu"
                                 unmountOnExit>
                                 <div className="side-menu__subitems-block">
                                     <SideMenuItem isSectionTitle={true} className="side-menu__link" item={subitem.subtitle} changeMenu={() => currentMenuHandler(secondLevel)}/>

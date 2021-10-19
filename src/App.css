@@ -2,3 +2,17 @@
     height: 100vh;
     width: 100vw;
 }
+
+.burger-menu {
+    height: 100%;
+    display: grid;
+    align-items: end;
+    position: relative;
+}
+
+.burger-menu__button {
+    display: inline;
+    padding: 10px;
+    background-color: transparent;
+}
+
