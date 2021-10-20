@@ -22,8 +22,7 @@
     transform: translate(110%, 0);
     transition: all 0.5s;
     overflow-x: hidden;
-    border-left: 1px solid #C6D6E5;
-    border-bottom: 1px solid #C6D6E5;
+    border: none;
 
 
     .side-menu__header {
@@ -274,6 +273,8 @@
 @media (min-width: 768px) {
     .side-menu {
         width: 60vw;
+        border-left: 1px solid #C6D6E5;
+        border-bottom: 1px solid #C6D6E5;
         .side-menu__body {
             .side-menu__items {
                 grid-row-gap: 2vw;
