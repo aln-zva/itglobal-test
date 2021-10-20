@@ -18,10 +18,11 @@
     background-color: #FFFFFF;
     position: absolute;
     top: 0;
-    right: -1px;
+    right: 0;
     transform: translate(110%, 0);
     transition: all 0.5s;
-    overflow-x: hidden;
+    //overflow-x: hidden;
+    overflow: hidden;
     border: none;
 
 
@@ -276,9 +277,6 @@
         border-left: 1px solid #C6D6E5;
         border-bottom: 1px solid #C6D6E5;
         .side-menu__body {
-            .side-menu__items {
-                grid-row-gap: 2vw;
-            }
             .side-menu__section {
                 grid-row-gap: 4vw;
             }
@@ -292,6 +290,10 @@
         .side-menu__footer {
             .side-menu__footer-items {
                 grid-row-gap: 3vw;
+            }
+
+            .side-menu__footer-link {
+                font-size: 36px;
             }
         }
     }

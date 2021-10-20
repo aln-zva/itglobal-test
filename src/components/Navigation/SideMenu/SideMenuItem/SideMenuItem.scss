@@ -13,6 +13,10 @@ a {
         grid-area: name;
     }
 
+    .side-menu__item-name.title {
+        font-size: 22px;
+    }
+
     .arrow {
         border-top: 1px solid #1D7DED;
         border-right: 1px solid #1D7DED;
@@ -34,17 +38,10 @@ a {
     color: #1D7DED;
 
     .arrow {
-        width: 14px;
-        height: 14px;
         border-top: 2px solid #1D7DED;
         border-right: 2px solid #1D7DED;
-    }
-    .side-menu__link-title-arrow {
-        margin-left: 2px;
-    }
-
-    .side-menu__link-arrow {
-        margin-right: 3px;
+        width: 14px;
+        height: 14px;
     }
 }
 
@@ -53,6 +50,7 @@ a {
     grid-template-areas: "name arrow";
     justify-content: space-between;
     padding: 0 10px;
+    font-size: 22px;
 }
 
 .side-menu__section-link-title {
@@ -60,6 +58,7 @@ a {
     grid-template-areas: "arrow name";
     justify-content: start;
     padding: 0 18px;
+    font-size: 22px;
 }
 
 @media (min-width: 768px) {
@@ -69,6 +68,12 @@ a {
 
     .side-menu__section-link-title {
         font-size: 36px;
+    }
+
+    .side-menu__item {
+        .side-menu__item-name.title {
+            font-size: 36px;
+        }
     }
 
 }

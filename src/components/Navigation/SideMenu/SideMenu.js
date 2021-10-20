@@ -46,7 +46,7 @@ const SideMenu = props => {
                 >
                     <ul className="side-menu__items">
                         {submenus.data.map(item => item.title !== '' &&
-                            <SideMenuItem item={item.title}
+                            <SideMenuItem item={item.title} isMain={true}
                                           changeMenu={() => currentMenuHandler(item.id)}
                                           className="side-menu__link"/>)}
                     </ul>
@@ -60,12 +60,12 @@ const SideMenu = props => {
                             classNames="menu-secondary"
                     >
                             <ul className="side-menu__section">
-                                <SideMenuItem isSectionTitle={true} className="side-menu__link"
+                                <SideMenuItem isMain={false} isSectionTitle={true} className="side-menu__link"
                                               item={menuTitle.title}
                                               changeMenu={() => currentMenuHandler('Main')}/>
                                 <div className="side-menu__items">
                                     {menuTitle.menuData.map(item => (
-                                       item.subtitle !== '' && <SideMenuItem isAbout={menuTitle.id === 'about'} isSectionTitle={false}
+                                       item.subtitle !== '' && <SideMenuItem isMain={false} isAbout={menuTitle.id === 'about'} isSectionTitle={false}
                                                       className="side-menu__section-item" item={item.subtitle}
                                                       changeMenu={() => subMenuHandler(item.subtitle, menuTitle.id)}/>))}
                                 </div>
@@ -82,7 +82,7 @@ const SideMenu = props => {
                                 classNames="submenu"
                                 unmountOnExit>
                                 <div className="side-menu__subitems-block">
-                                    <SideMenuItem isSectionTitle={true} className="side-menu__link" item={subitem.subtitle} changeMenu={() => currentMenuHandler(secondLevel)}/>
+                                    <SideMenuItem isMain={false} isSectionTitle={true} className="side-menu__link" item={subitem.subtitle} changeMenu={() => currentMenuHandler(secondLevel)}/>
                                     <div className="side-menu__subitem_separator"/>
                                     <ul className="side-menu__subitems">
                                             {subitem.info.map (s => ( <SideMenuSubitem name={s.name} info={s.info} />))}
