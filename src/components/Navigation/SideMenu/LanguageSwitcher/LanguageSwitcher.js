@@ -7,12 +7,15 @@ import BY from '../../../../assets/BY.svg'
 import TR from '../../../../assets/TR.svg'
 import check from '../../../../assets/check.svg'
 import LangContext from "../../../LangContext/LangContext";
+import useOutside from "../../../../hooks/useOutside";
 
-import React, {useContext, useState} from "react";
+import React, {useContext, useState, useRef, useEffect} from "react";
 
 
 const LanguageSwitcher = props => {
     const context = useContext(LangContext)
+
+    const switcher = useRef()
 
     const langs = [
         {value: 'en', name: 'United States', img: EN, label: 'Us'},
@@ -22,10 +25,17 @@ const LanguageSwitcher = props => {
         {value: 'kz', name: 'Казахстан', img: KZ, label: 'Kz'},
         {value: 'tr', name: 'Türkiye', img: TR, label: 'Tr'},
     ]
+
     const [currentLang, setCurrentLang] = useState(
         {value: 'ru', name: 'Россия', img: RU, label: 'Ru'},
     )
     const [showSwitch, setShowSwitch] = useState(false)
+
+    useEffect(() => {
+        const storedLanguageInformation = localStorage.getItem('currentLang')
+        const activeLang = langs.find(lang => lang.value === storedLanguageInformation)
+        setCurrentLang (activeLang)
+    }, [])
 
     const languageSwitcherToggle = () => {
         setShowSwitch(!showSwitch)
@@ -37,10 +47,13 @@ const LanguageSwitcher = props => {
         setShowSwitch(false)
         context.changeLanguage(value)
         props.changeMenu('Main')
+        localStorage.setItem('currentLang', activeLang.value)
     }
 
+    useOutside(switcher, () => setShowSwitch(false))
+
     return (
-        <div>
+        <div ref={switcher}>
             <div onClick={languageSwitcherToggle} className={showSwitch ? "switch-language switch-language_active" : "switch-language"}>
                 <img src={currentLang.img} alt="" className="switch-language__current-icon"/>
                 <span>{currentLang.label}</span>

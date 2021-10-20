@@ -40,6 +40,11 @@
     top: 9px;
 }
 
+@media (min-width: 1025px) {
+    .menu {
+        display: none;
+    }
+}
 
 
 

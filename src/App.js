@@ -2,21 +2,28 @@ import './App.css';
 import Navigation from "./components/Navigation/Navigation";
 import BurgerMenu from "./components/Navigation/BurgerMenu/BurgerMenu";
 import SideMenu from "./components/Navigation/SideMenu/SideMenu";
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
+import useOutside from "./hooks/useOutside";
 
 
 function App() {
-    const [isOpen, setIsOpen] = useState(false)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const burgerMenuToggle = () => {
-        setIsOpen(!isOpen)
+        setIsMenuOpen(!isMenuOpen)
     }
 
-  return (
+    const menu = useRef()
+
+    useOutside(menu, () => setIsMenuOpen(false))
+
+    return (
     <div className="App">
         <Navigation>
-            <BurgerMenu isOpen={isOpen} open={burgerMenuToggle}/>
-            <SideMenu close={burgerMenuToggle} isOpen={isOpen}/>
+            <div ref={menu}>
+                <BurgerMenu open={burgerMenuToggle}/>
+                <SideMenu close={burgerMenuToggle} isOpen={isMenuOpen}/>
+            </div>
         </Navigation>
     </div>
   );

@@ -17,8 +17,8 @@
     .switch-language__arrow {
         border-top: 1px solid #849BAF;
         border-right: 1px solid #849BAF;
-        width: 2vw;
-        height: 2vw;
+        width: 12px;
+        height: 12px;
         transform: rotate(135deg);
         justify-self: start;
     }
@@ -31,6 +31,11 @@
 
 .switch-language:hover {
     outline: 2px solid rgba(131, 188, 255, 0.5);
+
+    .switch-language__arrow {
+        width: 14px;
+        height: 14px;
+    }
 }
 
 .switch-language_active {

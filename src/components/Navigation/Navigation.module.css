@@ -1,6 +1,6 @@
 .nav {
     background-color: #FFFFFF;
-    box-shadow: 0 0 5px 0 #282c34;
+    box-shadow: 0 5px 10px -5px #282c34;
     height: 40px;
     display: grid;
     justify-content: end;

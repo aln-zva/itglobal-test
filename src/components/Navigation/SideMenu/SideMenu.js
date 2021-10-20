@@ -3,7 +3,7 @@ import SideMenuItem from "./SideMenuItem/SideMenuItem";
 import SideMenuSubitem from "./SideMenuItem/SideMenuSubitem";
 import {CSSTransition} from "react-transition-group";
 import CloseMenu from '@material-ui/icons/Close'
-import React, {useContext, useState} from 'react'
+import React, {useContext, useState } from 'react'
 import LanguageSwitcher from "./LanguageSwitcher/LanguageSwitcher";
 import translations from '../../../translations/translations'
 import LocalizedStrings from 'react-localization'
@@ -12,7 +12,6 @@ import LangContext from "../../LangContext/LangContext";
 const SideMenu = props => {
     const [currentMenu, setCurrentMenu] = useState('Main')
     const [currentSubMenu, setCurrentSubMenu] = useState('Services')
-
 
     const language = useContext(LangContext)
 
