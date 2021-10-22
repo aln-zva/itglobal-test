@@ -31,12 +31,6 @@ const LanguageSwitcher = props => {
     )
     const [showSwitch, setShowSwitch] = useState(false)
 
-    useEffect(() => {
-        const storedLanguageInformation = localStorage.getItem('currentLang')
-        const activeLang = langs.find(lang => lang.value === storedLanguageInformation)
-        setCurrentLang (activeLang)
-    }, [])
-
     const languageSwitcherToggle = () => {
         setShowSwitch(!showSwitch)
     }
