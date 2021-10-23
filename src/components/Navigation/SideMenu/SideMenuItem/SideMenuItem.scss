@@ -50,7 +50,7 @@ a {
     grid-template-areas: "name arrow";
     justify-content: space-between;
     padding: 0 10px;
-    font-size: 22px;
+    font-size: 18px;
 }
 
 .side-menu__section-link-title {
@@ -62,19 +62,6 @@ a {
 }
 
 @media (min-width: 768px) {
-    .side-menu__section-link {
-        font-size: 24px;
-    }
-
-    .side-menu__section-link-title {
-        font-size: 36px;
-    }
-
-    .side-menu__item {
-        .side-menu__item-name.title {
-            font-size: 36px;
-        }
-    }
 
 }
 

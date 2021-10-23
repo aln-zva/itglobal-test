@@ -95,6 +95,7 @@
         .side-menu__section-item {
             margin-left: 20px;
             font-weight: 400;
+            font-size: 18px;
         }
 
         .side-menu__subitems-block {
@@ -259,9 +260,6 @@
             .side-menu__subitems {
                 grid-row-gap: 6vw;
             }
-            .side-menu__link {
-                font-size: 36px;
-            }
         }
         .side-menu__footer {
             .side-menu__footer-items {
@@ -293,7 +291,7 @@
             }
 
             .side-menu__footer-link {
-                font-size: 36px;
+                font-size: 26px;
             }
         }
     }
